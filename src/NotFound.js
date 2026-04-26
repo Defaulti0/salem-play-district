@@ -1,0 +1,9 @@
+export default function NotFound() {
+  return (
+    <div>
+      <h1 className="text-center" style={{ marginTop: "2rem" }}>
+        404 Page Not Found!
+      </h1>
+    </div>
+  );
+}

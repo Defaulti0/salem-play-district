@@ -1,13 +1,118 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: #ffebcd;
+}
+
+/* home page css */
+.homeContainer {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.customButton {
+  background-color: orange;
+  border-color: orange;
+}
+
+.customButton:hover {
+  background-color: darkgoldenrod;
+  border-color: orange;
+}
+
+.navwrap {
+  position: relative;
+}
+
+.dots {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+}
+
+.dot {
+  border: none;
+  width: 10px;
+  height: 10px;
+  background: #c5c5c5;
+  border-radius: 50%;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dot:focus {
+  outline: none;
+}
+
+.dot.active {
+  background: #000;
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 75%;
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  fill: #000;
+  cursor: pointer;
+}
+
+.arrow--left {
+  left: 5px;
+}
+
+.arrow--right {
+  left: auto;
+  right: 5px;
+}
+
+.arrow--disabled {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.homeImages {
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+}
+
+.sliderImages {
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+
+.ambianceSliderNav {
+  max-height: 400px;
+}
+
+.menuSliderImages {
+  height: 50%;
+  object-fit: cover;
+}
+
+.ambianceImages {
+  max-height: 400px;
+}
+
+/* main navbar css */
+.customNavbar {
+  background-color: rgb(255, 255, 255) !important;
+}
+
+/* footer css */
+.Footer {
+  margin-top: auto;
+  color: white;
+  padding: 2rem;
+  background-color: black;
 }
