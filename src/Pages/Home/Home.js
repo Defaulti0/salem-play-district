@@ -6,6 +6,8 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 
 
+// TODO
+
 // If user is logged in, show scan button to open the camera and scan qr code for a stamp
 // If user is not logged in, show sign up / log in button to sign up or log in to save progress
 // Show button to view current progress towards completion
