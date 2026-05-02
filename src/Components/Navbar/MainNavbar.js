@@ -1,3 +1,4 @@
+import { Placeholder } from "react-bootstrap";
 import "../../index.css";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
@@ -9,12 +10,12 @@ export default function MainNavbar() {
         <Navbar.Brand href="/">
           <img
             alt=""
-            src="https://salemplaydistrict.com/assets/img/logo.png"
+            src={Placeholder}
             width="30"
             height="30"
             className="d-inline-block align-top"
           />{" "}
-          Sub Shack
+          Salem Play District
         </Navbar.Brand>
         <Navbar.Toggle />
       </Container>
