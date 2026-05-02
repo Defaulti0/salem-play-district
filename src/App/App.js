@@ -1,6 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "../Pages/Home/Home";
 import Camera from "../Pages/Camera/Camera";
+import SignIn from "../Pages/SignIn/SignIn";
+import Progress from "../Pages/Progress/Progress";
 import NotFound from "../NotFound";
 
 export default function App() {

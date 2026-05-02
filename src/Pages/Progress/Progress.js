@@ -1,12 +1,13 @@
 import "../../index.css";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 export default function Progress() {
   return (
     <div>
-      <Container className="justify-content-center mt-3 mb-3">
-        <Row className="text-center">
-          <h1>Progress</h1>
+      <Container className="homeContainer">
+        <Row style={{ margin: "2rem" }} className="text-center">
+          <h1 style={{ marginBottom: "2rem" }}>Progress</h1>
         </Row>
       </Container>
     </div>
