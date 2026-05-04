@@ -1,18 +1,31 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "../Pages/Home/Home";
-import Camera from "../Pages/Camera/Camera";
+import Camera from "../Components/Camera/Camera";
 import SignIn from "../Pages/SignIn/SignIn";
 import Progress from "../Pages/Progress/Progress";
+import SignUp from "../Pages/SignUp/SignUp";
 import NotFound from "../NotFound";
+import AuthCheck from '../Components/Firebase/AuthCheck';
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/SignIn" element={<SignIn />} />
-      <Route path="/Camera" element={<Camera />} />
-      <Route path="/Progress" element={<Progress />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+      <Routes>
+          <Route path="/" element={
+            <AuthCheck>
+                <Home />
+            </AuthCheck>
+          } />
+          <Route path="/SignIn" element={<SignIn />} />
+          <Route path="SignUp" element={<SignUp />} />
+          <Route path="/Camera" element={
+            <AuthCheck>
+                <Camera />
+            </AuthCheck>} />
+          <Route path="/Progress" element={
+            <AuthCheck>
+                <Progress />
+            </AuthCheck>} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
   );
 }

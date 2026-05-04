@@ -17,7 +17,6 @@ export default function MainNavbar() {
           />{" "}
           Salem Play District
         </Navbar.Brand>
-        <Navbar.Toggle />
       </Container>
     </Navbar>
   );
