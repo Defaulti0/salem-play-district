@@ -4,9 +4,9 @@ import Row from "react-bootstrap/Row";
 import { Scanner } from '@yudiel/react-qr-scanner';
 import { useState } from 'react';
 import GeoLocation from "../GeoLocation/GeoLocation.js";
-import { getFirestore } from "../../firebase.js";
-
-const db = getFirestore();
+import { useRef } from "react";
+import { db } from "../../firebase.js";
+import { doc, updateDoc, deleteDoc, query } from "firebase/firestore";
 
 
 // User scans qr code, get lat/long from current vars (latitude, longitude)
@@ -20,6 +20,9 @@ const db = getFirestore();
 // Show a modal to the user that they have visited the location or have received
 //  the stamp for visiting the location
 // Go back to the home page after the modal is closed
+
+// const userRef = query(collection(db, "User Progress"), where("userId", "==", auth.currentUser.uid));
+// const locationRef = query(collection(db, "qrcodes"));
 
 // function to check if the user is within the range of the qr code
 function checkRange(lat,lon,docid){

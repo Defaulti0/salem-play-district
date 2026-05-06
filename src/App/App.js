@@ -5,7 +5,7 @@ import SignIn from "../Pages/SignIn/SignIn";
 import Progress from "../Pages/Progress/Progress";
 import SignUp from "../Pages/SignUp/SignUp";
 import NotFound from "../NotFound";
-import AuthCheck from '../Components/Firebase/AuthCheck';
+import AuthCheck from '../Components/AuthCheck/AuthCheck';
 
 export default function App() {
   return (
