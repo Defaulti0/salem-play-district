@@ -14,9 +14,9 @@ export default function App() {
             <AuthCheck>
                 <Home />
             </AuthCheck>
-          } />
+          }/>
           <Route path="/SignIn" element={<SignIn />} />
-          <Route path="SignUp" element={<SignUp />} />
+          <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Camera" element={
             <AuthCheck>
                 <Camera />

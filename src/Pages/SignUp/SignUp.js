@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase.js';
+import { auth, db } from '../../firebase.js';
 import { Link, useNavigate } from 'react-router-dom';
+import { doc, setDoc } from "firebase/firestore";
+
 
 function SignUp() {
   const [email, setEmail] = useState('');
@@ -21,7 +23,24 @@ function SignUp() {
     try {
       setError('');
       setLoading(true);
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+      // Create a new document in the User Progress collection for the new user
+      // Set the user's progress to false for all locations
+
+      // doc fields are array of 4 booleans corresponding to the locations
+      //  in the locations.json file
+      // 
+      const newUser = userCredential.user;
+      const userRef = doc(db, "UserProgress", newUser.uid);
+
+      await setDoc(userRef, {
+        vrcenter: false,
+        thundervalley: false,
+        launchpad: false,
+        skatecenter: false,
+      });
+
       navigate('/');
     } catch (error) {
       setError('Failed to create an account: ' + error.message);
@@ -68,7 +87,7 @@ function SignUp() {
           </button>
         </form>
         <div className="login-link">
-          Already have an account? <Link to="/login">Log In</Link>
+          Already have an account? <Link to="/SignIn">Log In</Link>
         </div>
       </div>
     </div>
