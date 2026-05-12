@@ -1,9 +1,34 @@
-import { Placeholder } from "react-bootstrap";
+import { Placeholder, Button } from "react-bootstrap";
 import "../../index.css";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../../firebase';
+import { signOut, onAuthStateChanged } from 'firebase/auth';
+
+
+
 
 export default function MainNavbar() {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  async function handleLogout() {
+    try {
+      await signOut(auth);
+      navigate('/SignIn');
+    } catch (error) {
+      console.error('Failed to log out:', error);
+    }
+  }
   return (
     <Navbar expand="lg" className="bg-body-tertiary customNavbar" sticky="top">
       <Container>
@@ -15,8 +40,16 @@ export default function MainNavbar() {
             height="30"
             className="d-inline-block align-top"
           />{" "}
-          Salem Play District
+          Salem's Play District
         </Navbar.Brand>
+
+        {user ? (
+          <Button className="customButton" onClick={handleLogout}>
+            Log Out
+          </Button>
+        ) : (
+          <></>
+        )}
       </Container>
     </Navbar>
   );
