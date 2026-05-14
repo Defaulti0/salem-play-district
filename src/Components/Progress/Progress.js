@@ -6,12 +6,14 @@ import { useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db, auth } from "../../firebase";
 import Stamp from "../Stamp/Stamp";
+import launchpadStamp from "../../Logos/launchpad-logo.png";
+import skatecenterStamp from "../../Logos/skatecenter-logo.png";
+import thundervalleyStamp from "../../Logos/thundervalley-logo.png";
+import vrcenterStamp from "../../Logos/vrcenter-logo.png";
 
 export default function Progress() {
   const [progress, setProgress] = useState([]);
 
-  
-  
   useEffect(() => {
       const locationNames = {
         launchpad: "Launching Pad Trampoline Park & Family Fun Center",
@@ -19,6 +21,13 @@ export default function Progress() {
         thundervalley: "Thunder Valley",
         vrcenter: "The VR Center"
       };
+
+      const stampImages = {
+        launchpad: launchpadStamp,
+        skatecenter: skatecenterStamp,
+        thundervalley: thundervalleyStamp,
+        vrcenter: vrcenterStamp
+      } 
       
       const fetchProgress = async () => {
       const user = auth.currentUser;
@@ -34,9 +43,10 @@ export default function Progress() {
           
           const formattedArray = Object.keys(data).map((key) => ({
             location: {
-              name: locationNames[key] || key
+              name: locationNames[key] || key,
+              logo: stampImages[key] || key,
             },
-            visited: data[key] 
+            visited: data[key]
           })).sort((a, b) => a.location.name.localeCompare(b.location.name));
 
           setProgress(formattedArray);
@@ -58,13 +68,12 @@ export default function Progress() {
       </Row>
       <Row>
         {progress.map((item) => (
-            <Col className="text-center mt-2 mb-2" xs={6} key={item.location.name}>
+            <Col className="text-center mt-2 mb-2" xs={12} sm={6} md={4} lg={6} key={item.location.name}>
                 <Stamp
                     key={item.location.name} 
                     location={item.location} 
                     visited={item.visited}   
-                >
-                </Stamp>
+                />
             </Col>
         ))}
       </Row>

@@ -1,25 +1,25 @@
 {
     "ZaqgTmW2UTzeEDOlmlL2": {
-        "lat": "37.2659682",
-        "lng": "-80.0282608",
+        "lat": "37.265994034822505",
+        "lng": "-80.02547853163071",
         "name": "The VR Center",
         "dbname": "vrcenter"
     },
     "lnqkJlwkAwBZgGQlg54x": {
-        "lat": "37.2651304",
-        "lng": "-80.017928",
+        "lat": "37.26513733749752",
+        "lng": "-80.01791626533938",
         "name": "The Skate Center",
         "dbname": "skatecenter"
     },
     "rBZkumiRsTtKmyLh37J2": {
-        "lat": "37.270867",
-        "lng": "-80.0342793",
+        "lat": "37.270551238246384",
+        "lng": "-80.03121788109992",
         "name": "Thunder Valley",
         "dbname": "thundervalley"
     },
     "wIQCD9iwTKvSKb2g4em7": {
-        "lat": "37.3157421",
-        "lng": "-79.9466146",
+        "lat": "37.272428560849804",
+        "lng": "-80.03046403540749",
         "name": "Launch Pad",
         "dbname": "launchpad"
     }

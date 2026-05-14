@@ -11,7 +11,7 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db, auth } from "../../firebase";
 
 export default function Camera() {
-    const [detectedCodes, setDetectedCodes] = useState([]);
+    const [ setDetectedCodes ] = useState([]);
     const { latitude, longitude } = GeoLocation();
     
     // Modal State
@@ -25,7 +25,7 @@ export default function Camera() {
     };
 
     const checkRange = (lat, lon, docid) => {
-        const range = 0.0004;
+        const range = 0.0009;
         const locData = require("../../locations.json");
 
         if (locData.hasOwnProperty(docid)) {
@@ -89,31 +89,32 @@ export default function Camera() {
     return (
         <div>
             <Container className="homeContainer">
+                <Row className="text-center">
+                    <h1>Camera</h1>
+                </Row>
+                <Row className="text-center align-items-center" style={{width: "75%", margin: "0 auto", display: "flex", justifyContent: "center", alignItems: "center"}}>
+                    <Scanner
+                        onScan={handleScan}
+                        onError={(error) => console.error(error)}
+                        components={{
+                            onOff: true,
+                            finder: true,
+                        }}
+                        style={{}}
+                    />
+
+                    {/* <p style={{ marginTop: "1rem" }}>
+                        QR Code data: {detectedCodes.map((code) => code.rawValue).join(', ')}
+                        </p>
+                        <p>Latitude: {latitude}</p>
+                        <p>Longitude: {longitude}</p> */}
+                </Row>
                 <Row>
                     <Col className="text-center">
                         <Button className="customButton" href="/">
                             Back to Home
                         </Button>
                     </Col>
-                </Row>
-                <Row style={{ margin: "2rem" }} className="text-center">
-                    <h1 style={{ marginBottom: "2rem" }}>Camera</h1>
-                    <Scanner
-                        onScan={handleScan}
-                        onError={(error) => console.error(error)}
-                        components={{
-                            torch: true,
-                            onOff: true,
-                            finder: true,
-                        }}
-                        style={{ width: '100%', maxWidth: '500px', height: 'auto' }}
-                    />
-
-                    <p style={{ marginTop: "1rem" }}>
-                        QR Code data: {detectedCodes.map((code) => code.rawValue).join(', ')}
-                    </p>
-                    <p>Latitude: {latitude}</p>
-                    <p>Longitude: {longitude}</p>
                 </Row>
             </Container>
 

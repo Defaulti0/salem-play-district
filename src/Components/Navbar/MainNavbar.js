@@ -1,14 +1,12 @@
-import { Placeholder, Button } from "react-bootstrap";
 import "../../index.css";
+import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
-
-
-
+import SalemLogo from "../../Logos/salem-logo.jpg";
 
 export default function MainNavbar() {
   const [user, setUser] = useState(null);
@@ -35,7 +33,7 @@ export default function MainNavbar() {
         <Navbar.Brand href="/">
           <img
             alt=""
-            src={Placeholder}
+            src={SalemLogo}
             width="30"
             height="30"
             className="d-inline-block align-top"

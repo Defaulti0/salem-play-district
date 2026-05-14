@@ -5,7 +5,8 @@
 }
 
 body {
-  background-color: #ffebcd;
+  background-color: #051523 !important;
+  color: white !important;
 }
 
 /* home page css */
@@ -15,13 +16,13 @@ body {
 }
 
 .customButton {
-  background-color: orange;
-  border-color: orange;
+  background-color: #e65100;
+  border-color: #e65100;
 }
 
 .customButton:hover {
-  background-color: darkgoldenrod;
-  border-color: orange;
+  background-color: #bf360c;
+  border-color: #bf360c;
 }
 
 .navwrap {

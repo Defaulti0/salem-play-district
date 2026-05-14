@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../../firebase.js';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { doc, setDoc } from "firebase/firestore";
-
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Form from 'react-bootstrap/Form';
 
 function SignUp() {
   const [email, setEmail] = useState('');
@@ -23,14 +27,8 @@ function SignUp() {
     try {
       setError('');
       setLoading(true);
+
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-
-      // Create a new document in the User Progress collection for the new user
-      // Set the user's progress to false for all locations
-
-      // doc fields are array of 4 booleans corresponding to the locations
-      //  in the locations.json file
-      // 
       const newUser = userCredential.user;
       const userRef = doc(db, "UserProgress", newUser.uid);
 
@@ -50,46 +48,58 @@ function SignUp() {
   }
 
   return (
-    <div className="signup-container">
-      <div className="signup-form">
-        <h2>Sign Up</h2>
-        {error && <div className="error-message">{error}</div>}
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Email</label>
-            <input
-              type="email"
+    <div className="home-container">
+      <Container className="justify-content-center mt-3 mb-3">
+      <Row className="justify-content-center mt-3 mb-3">
+        <Row className="text-center">
+          <h2>Sign Up</h2>
+          {error && <div className="error-message">{error}</div>}
+        </Row>
+        
+        <Row className="justify-content-center text-center">
+          <Form onSubmit={handleSubmit}>
+          <Row className="m-3">
+            <Form.Label>Email</Form.Label>
+            <Form.Control 
+              type="email" 
+              placeholder="Enter email" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-          </div>
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              type="password"
+          </Row>
+          <Row className="m-3">
+            <Form.Label>Password</Form.Label>
+            <Form.Control 
+              type="password" 
+              placeholder="" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </div>
-          <div className="form-group">
-            <label>Confirm Password</label>
-            <input
-              type="password"
+          </Row>
+          <Row className="m-3">
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control 
+              type="password" 
+              placeholder=""
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-          </div>
-          <button disabled={loading} type="submit" className="submit-button">
+          </Row>
+          <Button disabled={loading} type="submit" className="customButton my-3">
             Sign Up
-          </button>
-        </form>
-        <div className="login-link">
-          Already have an account? <Link to="/SignIn">Log In</Link>
-        </div>
-      </div>
+          </Button>
+        </Form>
+        <Row className="text-center">
+          <Col>
+            Already have an account? <Button className="customButton mx-auto" onClick={() => navigate('/SignIn')}>Log In</Button>
+          </Col>
+        </Row>
+        </Row>
+      </Row>
+    </Container>
     </div>
   );
 }

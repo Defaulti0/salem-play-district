@@ -31,19 +31,18 @@ function Home() {
 
   return (
     <div className="home-container">
-        <Container className="justify-content-center mt-3 mb-3">
-
+        <Container className="mt-3 mb-2">
             <Row className="text-center">
                 <h1>Welcome!</h1>
-                <h4>You are logged in as: {currentUser.email}</h4>
+                <h4>You are logged in as: <b>{currentUser.email}</b></h4>
                 <p style={{
-                    fontSize: '20px'
+                    fontSize: '17px'
                 }}>
-                    Scan a valid QR code to receive a stamp. Collect 4 stamps to receive a discount on your next purchase!
+                    Scan a valid QR code to receive a stamp. Collect all stamps to receive a discount on your next purchase!
                 </p>
             </Row>
 
-            <Row className="mb-2">
+            <Row>
                 <Col className="text-center">
                     <Button className="customButton" href="/camera">
                         Scan QR Code
@@ -51,7 +50,7 @@ function Home() {
                 </Col>
             </Row>
         
-            <Row className="justify-content-center mt-3 mb-3">
+            <Row>
                 <Progress></Progress>
             </Row>    
         </Container>
