@@ -11,7 +11,8 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db, auth } from "../../firebase";
 
 export default function Camera() {
-    const [ detrctedCodes, setDetectedCodes ] = useState([]);
+    // eslint-disable-next-line no-unused-vars
+    const [ detectedCodes , setDetectedCodes ] = useState([]);
     const { latitude, longitude } = GeoLocation();
     
     // Modal State
